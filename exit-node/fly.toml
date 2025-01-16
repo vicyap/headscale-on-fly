@@ -1,0 +1,20 @@
+app = 'myheadscale-exit'
+primary_region = 'lax'
+swap_size_mb = 512
+
+[build]
+
+[processes]
+  app = '/bin/sh /app/start_tailscale.sh'
+
+[[mounts]]
+  source = 'data'
+  destination = '/var/lib/tailscale'
+  initial_size = 1
+
+[[restart]]
+  policy = 'always'
+
+[[vm]]
+  size = 'shared-cpu-1x'
+  memory = 256
