@@ -1,0 +1,36 @@
+# fly.toml app configuration file generated for green-star-3408 on 2025-01-15T17:18:53-06:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'green-star-3408'
+primary_region = 'lax'
+
+[build]
+
+[processes]
+  app = 'headscale serve'
+
+[[mounts]]
+  source = 'data'
+  destination = '/var/lib/headscale'
+  initial_size = '1'
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = 'stop'
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ['app']
+
+[[files]]
+  guest_path = '/etc/headscale/config.yaml'
+  local_path = 'config.yaml'
+
+[[restart]]
+  policy = 'always'
+
+[[vm]]
+  size = 'shared-cpu-1x'
+  memory = '256'
