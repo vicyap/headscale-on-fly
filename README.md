@@ -33,7 +33,7 @@ TODO
 
 If you are on a network that blocks tailscale.com because it is a "VPN".
 
-I started this project because I was recently at a library, but their wifi
+I started this idea because I was recently at a library, but their wifi
 network blocked access to tailscale.com. This prevented my Tailscale client
 from starting because it connects to https://controlplane.tailscale.com.
 
