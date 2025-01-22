@@ -31,11 +31,12 @@ TODO
 
 ## Why?
 
-If you are on a network that blocks tailscale.com because it is a "VPN".
+If you are on a network that blocks tailscale.com because it is considered a
+VPN.
 
-I started this idea because I was recently at a library, but their wifi
-network blocked access to tailscale.com. This prevented my Tailscale client
-from starting because it connects to https://controlplane.tailscale.com.
+I started this idea because I was recently on a wifi network that blocked
+access to tailscale.com. This prevented my Tailscale client from starting
+because it connects to https://controlplane.tailscale.com.
 
 This was an issue for me because I do a lot of development work on a remote
 machine that I connect to using Tailscale.
