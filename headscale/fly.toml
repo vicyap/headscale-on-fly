@@ -1,10 +1,10 @@
-# fly.toml app configuration file generated for green-star-3408 on 2025-01-15T17:18:53-06:00
+# fly.toml app configuration file generated for morning-frost-8257 on 2025-01-23T11:02:33-06:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'green-star-3408'
-primary_region = 'lax'
+app = 'morning-frost-8257'
+primary_region = 'dfw'
 
 [build]
 
@@ -33,4 +33,3 @@ primary_region = 'lax'
 
 [[vm]]
   size = 'shared-cpu-1x'
-  memory = '256'

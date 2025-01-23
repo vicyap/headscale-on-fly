@@ -1,0 +1,28 @@
+# fly.toml app configuration file generated for young-shape-1750 on 2025-01-23T10:36:46-06:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'young-shape-1750'
+primary_region = 'dfw'
+swap_size_mb = 512
+
+[build]
+
+[[vm]]
+  size = 'shared-cpu-1x'
+
+[processes]
+  app = '/bin/sh /app/start_tailscale.sh'
+
+[[mounts]]
+  source = 'data'
+  destination = '/var/lib/tailscale'
+  initial_size = 1
+
+[[restart]]
+  policy = 'always'
+
+[env]
+  # replace HEADSCALE_URL with your headscale server url
+  HEADSCALE_URL='https://my-headscale.fly.dev'
