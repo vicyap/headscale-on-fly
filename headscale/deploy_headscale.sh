@@ -43,17 +43,17 @@ FLY_APP="$(fly config show --local | jq -r '.app')"
 echo "Generated app name: $FLY_APP"
 
 # Use the app name to set HEADSCALE_URL
-HEADSCALE_URL="https://${FLY_APP}.fly.dev:443"
+HEADSCALE_URL="https://${FLY_APP}.fly.dev"
 
 # Copy the example headscale config to config.yaml
 # Replace values as needed
 curl -s -o config.yaml https://raw.githubusercontent.com/juanfont/headscale/refs/tags/v0.23.0/config-example.yaml
-server_url="${HEADSCALE_URL}"
+server_url="${HEADSCALE_URL}:443"
 base_domain="${FLY_APP}.hs"
 if [[ "$OSTYPE" == "darwin"* ]]; then
     sed -i '' "s|^server_url: .*|server_url: ${server_url}|g" config.yaml
     sed -i '' "s|^listen_addr: .*|listen_addr: 0.0.0.0:8080|g" config.yaml
-    sed -i '' "s|^  base_domain: .*|  base_domnain: ${base_domain}|g" config.yaml
+    sed -i '' "s|^  base_domain: .*|  base_domain: ${base_domain}|g" config.yaml
 else
     sed -i "s|^server_url:.*|server_url: ${server_url}|g" config.yaml
     sed -i "s|^listen_addr:.*|listen_addr: 0.0.0.0:8080|g" config.yaml
