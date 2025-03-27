@@ -55,7 +55,7 @@ fly launch \
     --no-deploy \
     --region "$FLY_REGION" \
     --name "$FLY_APP" \
-    --env "HEADSCALE_URL=${HEADSCALE_FLY_APP}.fly.dev" \
+    --env "HEADSCALE_URL=https://${HEADSCALE_FLY_APP}.fly.dev" \
     --yes
 
 # Deploy to Fly

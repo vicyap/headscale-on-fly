@@ -1,16 +1,16 @@
-# fly.toml app configuration file generated for young-shape-1750 on 2025-01-23T10:36:46-06:00
+# fly.toml app configuration file generated for silent-glitter-5987-exit-node on 2025-03-27T13:06:15-05:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'young-shape-1750'
-primary_region = 'dfw'
+app = 'silent-glitter-5987-exit-node'
+primary_region = 'lax'
 swap_size_mb = 512
 
 [build]
 
-[[vm]]
-  size = 'shared-cpu-1x'
+[env]
+  HEADSCALE_URL = 'https://silent-glitter-5987.fly.dev'
 
 [processes]
   app = '/bin/sh /app/start_tailscale.sh'
@@ -18,11 +18,18 @@ swap_size_mb = 512
 [[mounts]]
   source = 'data'
   destination = '/var/lib/tailscale'
-  initial_size = 1
+  initial_size = '1'
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = 'stop'
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ['app']
 
 [[restart]]
   policy = 'always'
 
-[env]
-  # replace HEADSCALE_URL with your headscale server url
-  HEADSCALE_URL='https://my-headscale.fly.dev'
+[[vm]]
+  size = 'performance-1x'
